@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">myTest01</string>
+    <string name="app_name">OpenCV3_Android_App</string>
+    <string-array name="spinner_menu">
+        <item>Random</item>
+        <item>Threshold</item>
+        <item>Greyscale</item>
+        <item>Edge Detect</item>
+        <item>Negative</item>
+        <item>Contrast Stretch</item>
+    </string-array>
 </resources>
