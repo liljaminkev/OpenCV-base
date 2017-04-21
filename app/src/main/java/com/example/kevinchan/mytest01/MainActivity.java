@@ -15,6 +15,7 @@ import org.opencv.android.OpenCVLoader;
 import org.opencv.android.CameraBridgeViewBase.CvCameraViewListener2;
 import org.opencv.core.Mat;
 import org.opencv.android.CameraBridgeViewBase.CvCameraViewFrame;
+import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
 
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -118,6 +119,7 @@ public class MainActivity extends AppCompatActivity implements CvCameraViewListe
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
         Mat imageMat = inputFrame.rgba();
         Mat gray = inputFrame.gray();
+        Mat kernelDilate = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, new Size(3, 3));
 
         // now you use the Mat class to represent the Image and you can use method calls
         // like imageMat
@@ -167,6 +169,17 @@ public class MainActivity extends AppCompatActivity implements CvCameraViewListe
             Imgproc.threshold(gray,gray,50.0,255.0,Imgproc.THRESH_BINARY);
             return gray;
         }
+        else if (this.menu_item_selected.equals("Mean Blur")){
+            Log.i("SPINNER", "performing Mean Blur");
+            Imgproc.blur(imageMat,imageMat, new Size(3,3));
+            return imageMat;
+        }
+        else if (this.menu_item_selected.equals("Gaussian Blur")){
+            Log.i("SPINNER", "performing Gaussian Blur");
+            Imgproc.GaussianBlur(imageMat,imageMat, new Size(3,3),0);
+            return imageMat;
+        }
+
         //else return gray
         else{
             return gray;

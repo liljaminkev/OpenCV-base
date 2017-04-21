@@ -7,5 +7,8 @@
         <item>Edge Detect</item>
         <item>Negative</item>
         <item>Contrast Stretch</item>
+        <item>Mean Blur</item>
+        <item>Gaussian Blur</item>
+        <item>Dilation</item>
     </string-array>
 </resources>
